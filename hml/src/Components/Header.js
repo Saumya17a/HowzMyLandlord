@@ -31,8 +31,8 @@ class Header extends Component {
             </li>
 
             <li>
-              <a className="smoothscroll" href="#about">
-                About
+              <a className="smoothscroll" href="#signup">
+                Sign Up
               </a>
             </li>
 
@@ -79,7 +79,7 @@ class Header extends Component {
         </div>
 
         <p className="scrolldown">
-          <a className="smoothscroll" href="#about">
+          <a className="smoothscroll" href="#signup">
             <i className="icon-down-circle"></i>
           </a>
         </p>

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import Fade from "react-reveal";
 
-class About extends Component {
+class signup extends Component {
   render() {
     if (!this.props.data) return null;
 
     const name = this.props.data.name;
-    const profilepic = "images/" + this.props.data.image;
     const bio = this.props.data.bio;
     const street = this.props.data.address.street;
     const city = this.props.data.address.city;
@@ -17,19 +16,12 @@ class About extends Component {
     const resumeDownload = this.props.data.resumedownload;
 
     return (
-      <section id="about">
+      <section id="signup">
         <Fade duration={1000}>
           <div className="row">
-            <div className="three columns">
-              <img
-                className="profile-pic"
-                src={profilepic}
-                alt="Nordic Giant Profile Pic"
-              />
-            </div>
-            <div className="nine columns main-col">
-              <h2>About Me</h2>
 
+            <div className="ten columns main-col">
+              <h2>Sign Up</h2>
               <p>{bio}</p>
               <div className="row">
                 <div className="columns contact-details">
@@ -64,4 +56,4 @@ class About extends Component {
   }
 }
 
-export default About;
+export default signup;
