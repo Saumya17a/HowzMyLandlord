@@ -5,16 +5,6 @@ class signup extends Component {
   render() {
     if (!this.props.data) return null;
 
-    const name = this.props.data.name;
-    const bio = this.props.data.bio;
-    const street = this.props.data.address.street;
-    const city = this.props.data.address.city;
-    const state = this.props.data.address.state;
-    const zip = this.props.data.address.zip;
-    const phone = this.props.data.phone;
-    const email = this.props.data.email;
-    const resumeDownload = this.props.data.resumedownload;
-
     return (
       <section id="signup">
         <Fade duration={1000}>
@@ -22,16 +12,36 @@ class signup extends Component {
 
             <div className="ten columns main-col">
               <h2>Sign Up</h2>
-              <p>{bio}</p>
               <div className="row">
 
-                <div className="columns download">
-                  <p>
-                    <a href={resumeDownload} className="button">
-                      Sign Up
-                    </a>
-                  </p>
-                </div>
+              {/*
+                Section - Sign Up Form
+                Description - This form asks for name, email id and password
+              */}
+              <form>
+                <label>
+                  First Name:
+                  <input type="text" name="First Name" />
+                </label>
+                <label>
+                  Last Name:
+                  <input type="text" name="Last Name" />
+                </label>
+                <label>
+                Email ID:
+                  <input type="text" name="Email ID" />
+                </label>
+                <label>
+                Password:
+                  <input type="text" name="Password" />
+                </label>
+                <label>
+                Re-enter Password:
+                  <input type="text" name="Re-enter Password" />
+                </label>
+                <input type="submit" value="Submit" />
+              </form>
+
               </div>
             </div>
           </div>
