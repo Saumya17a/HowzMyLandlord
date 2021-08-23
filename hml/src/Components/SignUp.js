@@ -21,25 +21,30 @@ class signup extends Component {
               <form>
                 <label>
                   First Name:
-                  <input type="text" name="First Name" />
                 </label>
+                <input type="text" name="First Name" placeholder="Enter first name." />
                 <label>
                   Last Name:
-                  <input type="text" name="Last Name" />
                 </label>
+                <input type="text" name="Last Name" placeholder="Enter last name."/>
                 <label>
                 Email ID:
-                  <input type="text" name="Email ID" />
                 </label>
+                <input type="text" name="Email ID" placeholder="Enter email address."/>
                 <label>
                 Password:
-                  <input type="text" name="Password" />
                 </label>
+                <input type="password" name="Password" placeholder="Enter Password." />
                 <label>
-                Re-enter Password:
-                  <input type="text" name="Re-enter Password" />
+                Confirm Password:
                 </label>
-                <input type="submit" value="Submit" />
+                <input type="password" name="Confirm Password" placeholder="Confirm Password." />
+                <button className="form-input-btn" type="submit" value="Submit" >
+                Sign Up
+                </button>
+                <span className="form-input-login">
+                  Already have an account? <a href="#">Login </a> 
+                </span>
               </form>
 
               </div>
