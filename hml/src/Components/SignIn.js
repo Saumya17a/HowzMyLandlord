@@ -11,7 +11,7 @@ class signin extends Component {
           <div className="row">
 
             <div className="ten columns main-col">
-              <h2>Sign In</h2>
+              <h2 class = "backspace1" >Sign In</h2>
               <div className="row">
 
               {/*
@@ -29,7 +29,7 @@ class signin extends Component {
                 </label>
                 <input type="submit" value="Go" />
                 <span className="form-input-login">
-                  New to this website?. <a href="#signup">Sign Up </a> 
+                  &ensp;New to this website?. <a href="#signup">Sign Up </a> 
                 </span>
               </form>
 

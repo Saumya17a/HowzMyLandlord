@@ -11,8 +11,9 @@ class signup extends Component {
           <div className="row">
 
             <div className="ten columns main-col">
-              <h2>Sign Up</h2>
-              <div className="row">
+              <hr />
+              <h2 class = "backpspace">Sign Up</h2>
+            <div className="row">
 
               {/*
                 Section - Sign Up Form
@@ -43,7 +44,7 @@ class signup extends Component {
                 Sign Up
                 </button>
                 <span className="form-input-login">
-                  Already have an account? <a href="#signin">Login </a> 
+                  &ensp;Already have an account? <a href="#signin">Login </a> 
                 </span>
               </form>
               </div>

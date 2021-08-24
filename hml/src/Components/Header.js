@@ -42,7 +42,7 @@ class Header extends Component {
               </a>
             </li>
 
-            <li>
+            {/* <li>
               <a className="smoothscroll" href="#portfolio">
                 Works
               </a>
@@ -52,10 +52,11 @@ class Header extends Component {
               <a className="smoothscroll" href="#contact">
                 Contact
               </a>
-            </li>
+            </li> */}
           </ul>
         </nav>
-
+        {/*
+      
         <div className="row banner">
           <div className="banner-text">
             <Fade bottom>
@@ -77,7 +78,26 @@ class Header extends Component {
             </Fade>
           </div>
         </div>
-
+          */}
+          
+          <div className="row banner">
+            <div className="banner-text">
+              <Fade bottom>
+                <h1 className="responsive-headline">{name}</h1>
+              </Fade>
+              <Fade bottom duration={1200}>
+                <h3>{description}.</h3>
+              </Fade>
+              <div className = "box">
+              <input type="text"  class="searchTerm" placeholder="Ex: 3954 Dallas Road" />
+              </div>
+              <div className = "buttonSearch">
+                <button type="submit" class="searchButton" className = "buttonSearch">
+                <i class="fa fa-search"></i>
+              </button>
+              </div>
+          </div>
+        </div>
         <p className="scrolldown">
           <a className="smoothscroll" href="#signup">
             <i className="icon-down-circle"></i>
