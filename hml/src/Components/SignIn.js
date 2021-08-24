@@ -21,13 +21,16 @@ class signin extends Component {
               <form>
                   <label>
                 Email ID:
-                  <input type="text" name="Email ID" />
+                  <input type="email" name="Email ID" placeholder="abc@yahoo.com"/>
                 </label>
                 <label>
                 Password:
-                  <input type="text" name="Password" />
+                  <input type="password" name="Password" placeholder="Do Not Reveal"/>
                 </label>
                 <input type="submit" value="Go" />
+                <span className="form-input-login">
+                  New to this website?. <a href="#signup">Sign Up </a> 
+                </span>
               </form>
 
               </div>

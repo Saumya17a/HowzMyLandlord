@@ -22,23 +22,23 @@ class signup extends Component {
                 <label>
                   First Name:
                 </label>
-                <input type="text" name="First Name" placeholder="Enter first name." />
+                <input type="text" name="First Name" placeholder="Elon" />
                 <label>
                   Last Name:
                 </label>
-                <input type="text" name="Last Name" placeholder="Enter last name."/>
+                <input type="text" name="Last Name" placeholder="Musk"/>
                 <label>
                 Email ID:
                 </label>
-                <input type="text" name="Email ID" placeholder="Enter email address."/>
+                <input type="email" name="Email ID" placeholder="xyz@gmail.com"/>
                 <label>
                 Password:
                 </label>
-                <input type="password" name="Password" placeholder="Enter Password." />
+                <input type="password" name="Password" placeholder="Do Not reveal" />
                 <label>
                 Confirm Password:
                 </label>
-                <input type="password" name="Confirm Password" placeholder="Confirm Password." />
+                <input type="password" name="Confirm Password" placeholder="Do Not Reveal Again" />
                 <button className="form-input-btn" type="submit" value="Submit" >
                 Sign Up
                 </button>
