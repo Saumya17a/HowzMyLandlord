@@ -24,7 +24,7 @@ import CompleteExamples from "./index-sections/CompleteExamples.js";
 import SignUp from "./index-sections/SignUp.js";
 import Examples from "./index-sections/Examples.js";
 import Download from "./index-sections/Download.js";
-
+import signin from "Components/SignIn.js";
 function Index() {
   React.useEffect(() => {
     document.body.classList.add("index-page");
