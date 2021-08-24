@@ -46,7 +46,6 @@ class signup extends Component {
                   Already have an account? <a href="#">Login </a> 
                 </span>
               </form>
-
               </div>
             </div>
           </div>
