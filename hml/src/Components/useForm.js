@@ -21,6 +21,11 @@ const useForm = () => {
     lastName: ''
     });
 
+    // get errors and its setter function
+    // these will be used to display errors 
+    // related to user input
+    const [error, setError] = useState({});
+
 
     /*
     Description:    This function saves the user entered values in the signup form.
@@ -32,6 +37,14 @@ const useForm = () => {
             [name]: value
         })
     }
-    return{update, values};
+
+    /*
+    Description:    This function saves the user entered values in the signup form.
+    */
+    const submitForm= e =>{
+        const form_errors = validateForm(values);
+        setError(form_errors);
+    }
+    return{update, values, submitForm};
 }
 export default useForm;

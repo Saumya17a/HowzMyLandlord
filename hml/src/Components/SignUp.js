@@ -3,7 +3,7 @@ import Fade from "react-reveal";
 import useForm from "./useForm";
 
 function SignUp() {
-  const {update, values} = useForm();
+  const {update, values, submitForm} = useForm();
   {/*
     Section - Sign Up Form
     Description - This form asks for name, email id and password
@@ -16,7 +16,7 @@ function SignUp() {
             <hr />
             <h2 class = "backpspace">Sign Up</h2>
           <div className="row">
-            <form>
+            <form onSubmit={submitForm}>
               <label>
                 First Name:
               </label>
