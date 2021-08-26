@@ -16,7 +16,7 @@ function SignUp() {
             <hr />
             <h2 class = "backpspace">Sign Up</h2>
           <div className="row">
-            <form onSubmit={submitForm}>
+            <form>
               <label>
                 First Name:
               </label>
@@ -26,28 +26,20 @@ function SignUp() {
               <label>
                 Last Name:
               </label>
-              <input type="text" name="lastName" placeholder="Musk"/>
-              value={values.lastName}
-              onChange={update}
+              <input type="text" name="lastName" placeholder="Musk"value={values.lastName} onChange={update}/>
               <label>
               Email ID:
               </label>
-              <input type="email" name="emailID" placeholder="xyz@gmail.com"/>
-              value={values.emailID}
-              onChange={update}
+              <input type="email" name="emailID" placeholder="xyz@gmail.com" value={values.emailID} onChange={update}/>
               <label>
               Password:
               </label>
-              <input type="password" name="password" placeholder="Do Not reveal" />
-              value={values.password}
-              onChange={update}
+              <input type="password" name="password" placeholder="Do Not reveal" value={values.password} onChange={update}/>
               <label>
               Confirm Password:
               </label>
-              <input type="password" name="password2" placeholder="Do Not Reveal Again" />
-              value={values.password2}
-              onChange={update}
-              <button className="form-input-btn" type="submit" value="Submit" >
+              <input type="password" name="password2" placeholder="Do Not Reveal Again" value={values.password2} onChange={update}/>
+              <button className="form-input-btn" type="submit" value="Submit" onSubmit={submitForm}>
               Sign Up
               </button>
               <span className="form-input-login">
