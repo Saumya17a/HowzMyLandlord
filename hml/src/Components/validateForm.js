@@ -3,35 +3,36 @@ import {useState, useEffect} from 'react'
 /*
 Description:    This function saves the user entered values in the signup form.
 */
-const validateForm=(values)=>{
+function validateForm(values){
     // dictionary containing all the erros
     let errors = {};
 
-    if(!values.emailID){
-        errors.userName = "Email address cannot be empty";
+    if(!values.emailID.trim()){
+        errors.emailID = "Email address cannot be empty";
     }
-    if(!values.firstName){
+    if(!values.firstName.trim()){
         errors.firstName = "First Name cannot be empty";
     }
-    if(!values.lastName){
+    if(!values.lastName.trim()){
         errors.lastName = "Last Name cannot be empty";
     }
     if(!values.password){
         errors.password = "Password cannot be empty";
     }
     else if(values.password.length < 8){
-        errors.userName = "Password must be have at least 8 characters";
+        errors.password = "Password must be have at least 8 characters";
     }
     if(!values.password2){
         errors.password = "Password cannot be empty";
     }
     else if(values.password2.length < 8){
-        errors.userName = "Password must be have at least 8 characters";
+        errors.password2 = "Password must be have at least 8 characters";
     }
-    if(values.password != values.password2){
-        errors.password = "Passwords didn't match. Try Again"
+    else if(values.password != values.password2){
+        errors.password2 = "Passwords didn't match. Try Again"
     }
 
+    return errors
 }
 
 export default validateForm;

@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react'
-import validateForm from './validateForm';
 
-const useForm = () => {
+const useForm = (validateForm) => {
     /*
     Description:    this state object will store the sign-up information
                     entered by the user. 
@@ -30,19 +29,19 @@ const useForm = () => {
     Description:    This function saves the user entered values in the signup form.
     */
     const update= e =>{
-        const [name, value] = e.target
+        const {name, value} = e.target
         setValues({
             ...values,
             [name]: value
-        })
+        });
     }
 
     /*
     Description:    This function saves the user entered values in the signup form.
     */
     const submitForm= e =>{
-        const form_errors = validateForm(values);
-        setError(form_errors);
+        e.preventDefault()
+        setError(validateForm(values));
     }
     return{update, values, submitForm, errors};
 }

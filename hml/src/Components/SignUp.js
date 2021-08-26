@@ -1,9 +1,10 @@
 import React from 'react';
 import Fade from "react-reveal";
 import useForm from "./useForm";
+import validateForm from './validateForm';
 
 function SignUp() {
-  const {update, values, submitForm} = useForm();
+  const {update, values, submitForm, errors} = useForm(validateForm);
   {/*
     Section - Sign Up Form
     Description - This form asks for name, email id and password
@@ -16,30 +17,33 @@ function SignUp() {
             <hr />
             <h2 class = "backpspace">Sign Up</h2>
           <div className="row">
-            <form>
+            <form value="Submit" onSubmit={submitForm} className='form' noValidate>
               <label>
                 First Name:
               </label>
-              <input type="text" name="firstName" placeholder="Elon" />
-              value={values.firstName}
-              onChange={update}
+              <input type="text" name='firstName' placeholder="Elon" value={values.firstName} onChange={update}/>
+              {<p>{errors.firstName}</p>}
               <label>
                 Last Name:
               </label>
-              <input type="text" name="lastName" placeholder="Musk"value={values.lastName} onChange={update}/>
+              <input type="text" name="lastName" placeholder="Musk" value={values.lastName} onChange={update}/>
+              {<p>{errors.lastName}</p>}
               <label>
               Email ID:
               </label>
               <input type="email" name="emailID" placeholder="xyz@gmail.com" value={values.emailID} onChange={update}/>
+              {<p>{errors.emailID}</p>}
               <label>
               Password:
               </label>
               <input type="password" name="password" placeholder="Do Not reveal" value={values.password} onChange={update}/>
+              {<p>{errors.password}</p>}
               <label>
               Confirm Password:
               </label>
               <input type="password" name="password2" placeholder="Do Not Reveal Again" value={values.password2} onChange={update}/>
-              <button className="form-input-btn" type="submit" value="Submit" onSubmit={submitForm}>
+              {<p>{errors.password2}</p>}
+              <button className="form-input-btn" type="submit">
               Sign Up
               </button>
               <span className="form-input-login">
