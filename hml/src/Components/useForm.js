@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react'
-
-
+import validateForm from './validateForm';
 
 const useForm = () => {
     /*
@@ -24,7 +23,7 @@ const useForm = () => {
     // get errors and its setter function
     // these will be used to display errors 
     // related to user input
-    const [error, setError] = useState({});
+    const [errors, setError] = useState({});
 
 
     /*
@@ -45,6 +44,6 @@ const useForm = () => {
         const form_errors = validateForm(values);
         setError(form_errors);
     }
-    return{update, values, submitForm};
+    return{update, values, submitForm, errors};
 }
 export default useForm;
