@@ -22,27 +22,27 @@ function SignUp() {
                 First Name:
               </label>
               <input type="text" name='firstName' placeholder="Elon" value={values.firstName} onChange={update}/>
-              {<p>{errors.firstName}</p>}
+              {<p style={{ color: 'red' }}>{errors.firstName}</p>}
               <label>
                 Last Name:
               </label>
               <input type="text" name="lastName" placeholder="Musk" value={values.lastName} onChange={update}/>
-              {<p>{errors.lastName}</p>}
+              {<p style={{ color: 'red' }}>{errors.lastName}</p>}
               <label>
               Email ID:
               </label>
               <input type="email" name="emailID" placeholder="xyz@gmail.com" value={values.emailID} onChange={update}/>
-              {<p>{errors.emailID}</p>}
+              {<p style={{ color: 'red' }}>{errors.emailID}</p>}
               <label>
               Password:
               </label>
               <input type="password" name="password" placeholder="Do Not reveal" value={values.password} onChange={update}/>
-              {<p>{errors.password}</p>}
+              {<p style={{ color: 'red' }}>{errors.password}</p>}
               <label>
               Confirm Password:
               </label>
               <input type="password" name="password2" placeholder="Do Not Reveal Again" value={values.password2} onChange={update}/>
-              {<p>{errors.password2}</p>}
+              {<p style={{ color: 'red' }}>{errors.password2}</p>}
               <button className="form-input-btn" type="submit">
               Sign Up
               </button>
