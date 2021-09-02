@@ -28,3 +28,10 @@ const signUpTemplate = new mongoose.Schema({
         default:Date.name
     }
 })
+
+/*
+    Table Name:     Users
+    Description:    This DB stores information of users who complete signup process.
+    Schema:         signUpTemplate
+*/
+module.exports = mongoose.model("Users", signUpTemplate)
