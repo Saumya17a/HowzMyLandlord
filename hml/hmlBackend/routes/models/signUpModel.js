@@ -1,3 +1,5 @@
+// Description: This file contains the basic schema for the Database
+
 const mongoose = require('mongoose')
 
 // schema of signup database
@@ -21,7 +23,7 @@ const signUpTemplate = new mongoose.Schema({
     date: {
         type:Date,
         // defaults to today
-        default:Date.name
+        default:Date.now
     }
 })
 
