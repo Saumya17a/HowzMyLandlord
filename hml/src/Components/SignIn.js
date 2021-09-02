@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import Fade from "react-reveal";
-
-class signin extends Component {
-  render() {
-    if (!this.props.data) return null;
-
+import useForm from "./useForm";
+import validateSignIn from './validateSignIn.js';
+function SignIn() {
+const {update, values, submitForm, errors} = useForm(validateSignIn);
+// class signin extends Component {
+//   render() {
+  //  if (!this.props.data) return null;
     return (
       <section id="signin">
         <Fade duration={1000}>
@@ -18,14 +20,16 @@ class signin extends Component {
                 Section - Sign In Form
                 Description - This form asks for name, email id and password
               */}
-              <form>
+              <form value="Submit" onSubmit={submitForm} className='form' noValidate>
                   <label>
                 Email ID:
-                  <input type="email" name="Email ID" placeholder="abc@yahoo.com"/>
+                <input type="email" name="emailID" placeholder="abc@yahoo.com" value={values.emailID} onChange={update} />
+                {<p style={{ color: 'red' }}>{errors.emailID}</p>}
                 </label>
                 <label>
                 Password:
-                  <input type="password" name="Password" placeholder="Do Not Reveal"/>
+                  <input type="password" name="password" placeholder="Do Not Reveal"value={values.password} onChange={update}/>
+                  {<p style={{ color: 'red' }}>{errors.password}</p>}
                 </label>
                 <input type="submit" value="Go" />
                 <span className="form-input-login">
@@ -39,7 +43,8 @@ class signin extends Component {
         </Fade>
       </section>
     );
-  }
-}
+  // }
+// }
+};
 
-export default signin;
+export default SignIn;

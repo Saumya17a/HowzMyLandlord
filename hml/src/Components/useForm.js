@@ -32,7 +32,7 @@ const useForm = (validateForm) => {
         const {name, value} = e.target
         setValues({
             ...values,
-            [name]: value
+            [name] : value
         });
     }
 
