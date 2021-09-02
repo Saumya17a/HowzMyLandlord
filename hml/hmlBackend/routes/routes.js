@@ -1,6 +1,6 @@
 const { response } = require('express')
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
 const signupTemplate = require('./models/signUpModel')
 
 // POST method route

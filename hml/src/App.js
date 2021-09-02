@@ -6,8 +6,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import About from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
-import Contact from "./Components/Contact";
-import Portfolio from "./Components/Portfolio";
+
 
 class App extends Component {
   constructor(props) {
