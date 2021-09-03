@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import axios from 'axios'
 
 const useForm = (validateForm) => {
     /*
@@ -24,7 +25,6 @@ const useForm = (validateForm) => {
     // related to user input
     const [errors, setError] = useState({});
 
-
     /*
     Description:    This function saves the user entered values in the signup form.
     */
@@ -41,7 +41,11 @@ const useForm = (validateForm) => {
     */
     const submitForm= e =>{
         e.preventDefault()
+        // if any errors, save them
         setError(validateForm(values));
+        // send post request to hmlBackend server
+        axios.post('http://localhost:4000/app/signup', values)
+        .then(response => console.log(response.data))
     }
     return{update, values, submitForm, errors};
 }
