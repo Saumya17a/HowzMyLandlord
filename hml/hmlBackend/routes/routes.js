@@ -1,5 +1,6 @@
 const { response } = require('express')
 const express = require('express')
+const { data } = require('jquery')
 const router = express.Router()
 const signupTemplate = require('./models/signUpModel')
 
@@ -17,6 +18,18 @@ router.post('/signup', function (request, response) {
     .then(data=> {response.json(data)})
     // in case of erros return errors
     .catch(error => {response.json(error)})
+})
+
+router.get('/signin', function (request,response) {
+    // Retreive the emai and password from the request query 
+    emailID = request.query.emailID
+    password = request.query.password
+    // Search Criteria 
+    const tryUser = new signupTemplate()
+    signupTemplate.find({'emailID' : emailID, 'password' : password})
+    .then(data => {console.log("Response form database => " + data === '' )})
+    .catch(error => {response.json(error)})
+
 })
 
 

@@ -47,6 +47,16 @@ const useForm = (validateForm) => {
         axios.post('http://localhost:4000/app/signup', values)
         .then(response => console.log(response.data))
     }
-    return{update, values, submitForm, errors};
+    const logInForm = e => {
+        e.preventDefault()
+        //If any erros, save them
+        setError(validateForm(values));
+        //Send the email and password as query
+        const queryURl = 'http://localhost:4000/app/signin?emailID=' + values.emailID + '&password=' + values.password
+        // This will send the get request
+        axios.get(queryURl)
+        .then(response => console.log(response.data))
+    }
+    return{update, values, submitForm, logInForm,errors};
 }
 export default useForm;

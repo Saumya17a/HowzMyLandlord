@@ -4,6 +4,7 @@ Content-Type : application/json
 {
     "firstName": "Saumya",
     "lastName" : "Test Backend",
-    "emailID": "saumya@aetherautomation.cpm",
-    "password" : "test1"
+    "emailID": "saumya3@aetherautomation.cpm",
+    "password" : "test1",
+    "password2" : "test2"
 }

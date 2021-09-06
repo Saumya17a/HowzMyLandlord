@@ -3,7 +3,7 @@ import Fade from "react-reveal";
 import useForm from "./useForm";
 import validateSignIn from './validateSignIn.js';
 function SignIn() {
-const {update, values, submitForm, errors} = useForm(validateSignIn);
+const {update, values, submitForm, logInForm,errors} = useForm(validateSignIn);
 // class signin extends Component {
 //   render() {
   //  if (!this.props.data) return null;
@@ -20,7 +20,7 @@ const {update, values, submitForm, errors} = useForm(validateSignIn);
                 Section - Sign In Form
                 Description - This form asks for name, email id and password
               */}
-              <form value="Submit" onSubmit={submitForm} className='form' noValidate>
+              <form value="Submit" onSubmit={logInForm} className='form' noValidate>
                   <label>
                 Email ID:
                 <input type="email" name="emailID" placeholder="abc@yahoo.com" value={values.emailID} onChange={update} />
