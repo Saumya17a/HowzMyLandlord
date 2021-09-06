@@ -4,6 +4,9 @@ const { data } = require('jquery')
 const router = express.Router()
 const signupTemplate = require('./models/signUpModel')
 
+
+
+
 // POST method route
 router.post('/signup', function (request, response) {
         const signedUpUser = new signupTemplate({
@@ -27,9 +30,24 @@ router.get('/signin', function (request,response) {
     // Search Criteria 
     const tryUser = new signupTemplate()
     signupTemplate.find({'emailID' : emailID, 'password' : password})
-    .then(data => {console.log("Response form database => " + data === '' )})
+    .then(data => 
+    {
+        if (data.length === 0) {
+            response.json("Not a user")
+            
+        } else {
+            response.json("Redirecting to dashboard")
+        }
+    })
     .catch(error => {response.json(error)})
 
+})
+
+router.get('/cleanup', function(request,response){
+    signupTemplate.deleteMany({})
+    .then(data => {
+        console.log("Response for cleanup => " + data)
+    })
 })
 
 
