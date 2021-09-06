@@ -3,12 +3,15 @@ import {useState, useEffect} from 'react'
 /*
 Description:    This function saves the user entered values in the signup form.
 */
-function validateForm(values){
+function validateForm(values, emailAlreadyInUse){
     // dictionary containing all the erros
     let errors = {};
 
     if(!values.emailID.trim()){
         errors.emailID = "Email address cannot be empty";
+    }
+    else if(emailAlreadyInUse){
+        errors.emailID = "Email address already in use";
     }
     if(!values.firstName.trim()){
         errors.firstName = "First Name cannot be empty";

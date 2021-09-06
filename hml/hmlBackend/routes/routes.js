@@ -26,6 +26,9 @@ router.post('/signup', function (request, response) {
             // in case of erros return errors
             .catch(error => {response.json(error)})
         }
+        else{
+            response.json({'userAlreadyExists':true})
+        }
     })
     .catch(error => {response.json(error)})
     
