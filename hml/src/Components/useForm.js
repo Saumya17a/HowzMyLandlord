@@ -1,10 +1,7 @@
 import {useState, useEffect} from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from './SignUp';
-import LogIn from './SignIn';
-import axios from 'axios';
-import {Redirect} from 'react-router-dom';
 import { render } from '@testing-library/react';
+import RedirectSignIn from './redirectSignIn';
+import axios from 'axios';
 
 const useForm = (validateForm) => {
     /*
@@ -60,9 +57,8 @@ const useForm = (validateForm) => {
         console.log(emailAlreadyInUse)
     }
     const logInForm = e => {
+        var authSuccess = true;
         e.preventDefault()
-        //If any erros, save them
-        setError(validateForm(values));
         //Send the email and password as query
         const queryURl = 'http://localhost:4000/app/signin?emailID=' + values.emailID + '&password=' + values.password
         // This will send the get request
@@ -71,11 +67,15 @@ const useForm = (validateForm) => {
             console.log(response.data)
             if (response.data === "Not a user") {
                 console.log("Not a user => Redirect to Sign In")
-                
+                authSuccess = false;
+                //If any erros, save them
+                setError(validateForm(values,authSuccess));
             } 
             else {
                 console.log("Redirecting will happen");
-                
+                //If any erros, save them
+                setError(validateForm(values,authSuccess));
+                RedirectSignIn()
             }
         })
     }
