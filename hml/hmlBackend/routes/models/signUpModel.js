@@ -1,12 +1,14 @@
 // Description: This file contains the basic schema for the Database
 
+const { unique } = require('jquery')
 const mongoose = require('mongoose')
 
 // schema of signup database
 const signUpTemplate = new mongoose.Schema({
     emailID: {
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     password: {
         type:String,

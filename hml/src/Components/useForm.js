@@ -46,11 +46,18 @@ const useForm = (validateForm) => {
     */
     const submitForm= e =>{
         e.preventDefault()
-        // if any errors, save them
-        setError(validateForm(values));
+
+        // flag that checks whether emailID exists
+        var emailAlreadyInUse = false;
         // send post request to hmlBackend server
         axios.post('http://localhost:4000/app/signup', values)
-        .then(response => console.log(response.data))
+        .then(response => {
+            // check response to see if emailID flag is returned
+            emailAlreadyInUse = response.data['userAlreadyExists']
+            // if any errors, save them
+            setError(validateForm(values,emailAlreadyInUse));
+        })
+        console.log(emailAlreadyInUse)
     }
     const logInForm = e => {
         e.preventDefault()
@@ -72,6 +79,6 @@ const useForm = (validateForm) => {
             }
         })
     }
-    return{update, values, submitForm, logInForm,errors};
+    return{update, values, submitForm, logInForm, errors};
 }
 export default useForm;

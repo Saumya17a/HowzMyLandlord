@@ -3,26 +3,41 @@ const express = require('express')
 const { data } = require('jquery')
 const router = express.Router()
 const signupTemplate = require('./models/signUpModel')
+    
 
 
 
 
 // POST method route
 router.post('/signup', function (request, response) {
-        const signedUpUser = new signupTemplate({
-        firstName: request.body.firstName,
-        lastName:  request.body.lastName,
-        emailID:  request.body.emailID,
-        password: request.body.password
 
+    const signedUpUser = new signupTemplate({
+    firstName: request.body.firstName,
+    lastName:  request.body.lastName,
+    emailID:  request.body.emailID,
+    password: request.body.password
     })
-    //save successfully
-    signedUpUser.save()
-    .then(data=> {response.json(data)})
-    // in case of erros return errors
+
+    // check to see emailID already exists
+    signupTemplate.exists({'emailID' : signedUpUser.emailID})
+    .then(userAlreadyExists => {
+        // if response is false, then save the new user.
+        if(userAlreadyExists===false){
+            //save successfully
+            signedUpUser.save()
+            .then(data=> {response.json(data)})
+            // in case of erros return errors
+            .catch(error => {response.json(error)})
+        }
+        else{
+            response.json({'userAlreadyExists':true})
+        }
+    })
     .catch(error => {response.json(error)})
+    
 })
 
+// Get Method Route for sign in
 router.get('/signin', function (request,response) {
     // Retreive the emai and password from the request query 
     emailID = request.query.emailID
