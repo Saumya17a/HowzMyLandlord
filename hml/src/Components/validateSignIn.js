@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react'
 
 /*
 Description:    This function saves the user entered values in the signup form.

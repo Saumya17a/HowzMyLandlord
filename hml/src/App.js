@@ -7,6 +7,13 @@ import Footer from "./Components/Footer";
 import About from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
 import Dashboard from "Components/Dashboard";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 
 class App extends Component {
@@ -41,15 +48,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header data={this.state.resumeData.main} />
-        <About data={this.state.resumeData.main} />
-        <SignIn data={this.state.resumeData.resume} />
-        {/*<Portfolio data={this.state.resumeData.portfolio} />
-        <Contact data={this.state.resumeData.main} /> */}
-        <Dashboard data={this.state.resumeData.main} />
-        <Footer data={this.state.resumeData.main} />
-      </div>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route exact path="/">
+              <Header data={this.state.resumeData.main} />
+              <About data={this.state.resumeData.main} />
+              <SignIn data={this.state.resumeData.resume} />
+              <Footer data={this.state.resumeData.main} />
+            </Route>
+            <Route exact path="/Dashboard">
+              <Dashboard/>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

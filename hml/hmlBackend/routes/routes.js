@@ -1,11 +1,6 @@
-const { response } = require('express')
 const express = require('express')
-const { data } = require('jquery')
 const router = express.Router()
 const signupTemplate = require('./models/signUpModel')
-    
-
-
 
 
 // POST method route
