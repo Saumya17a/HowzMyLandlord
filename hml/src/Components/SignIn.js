@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import Fade from "react-reveal";
 import useForm from "./useForm";
 import validateSignIn from './validateSignIn.js';
+
 function SignIn() {
-const {update, values, submitForm, logInForm,errors} = useForm(validateSignIn);
-// class signin extends Component {
-//   render() {
-  //  if (!this.props.data) return null;
+  const {update, values, submitForm, logInForm,errors} = useForm(validateSignIn);
+
     return (
       <section id="signin">
         <Fade duration={1000}>
@@ -43,8 +42,6 @@ const {update, values, submitForm, logInForm,errors} = useForm(validateSignIn);
         </Fade>
       </section>
     );
-  // }
-// }
 };
 
 export default SignIn;
