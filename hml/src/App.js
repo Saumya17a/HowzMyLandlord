@@ -6,7 +6,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import About from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
-import { Router } from "react-router-dom";
+import Dashboard from "Components/Dashboard";
 import {
   BrowserRouter as Router,
   Switch,
@@ -58,6 +58,8 @@ class App extends Component {
               <Footer data={this.state.resumeData.main} />
             </Route>
             <Route exact path="/Dashboard">
+              <Dashboard/>
+            </Route>
           </Switch>
         </div>
       </Router>

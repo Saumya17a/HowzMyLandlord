@@ -5,6 +5,7 @@ import validateForm from './validateForm';
 
 function SignUp() {
   const {update, values, submitForm,logInForm, errors} = useForm(validateForm);
+  
   {/*
     Section - Sign Up Form
     Description - This form asks for name, email id and password

@@ -1,6 +1,6 @@
-import {useState, useEffect} from 'react';
-import { render } from '@testing-library/react';
+import {useState} from 'react';
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 const useForm = (validateForm) => {
     /*
@@ -20,6 +20,9 @@ const useForm = (validateForm) => {
     firstName: '',
     lastName: ''
     });
+
+    // this history hook will be used to redirect to Dashboard after successfull signin
+    let history = useHistory();
 
     // get errors and its setter function
     // these will be used to display errors 
@@ -56,8 +59,10 @@ const useForm = (validateForm) => {
         console.log(emailAlreadyInUse)
     }
     const logInForm = e => {
+
         var authSuccess = true;
         e.preventDefault()
+
         //Send the email and password as query
         const queryURl = 'http://localhost:4000/app/signin?emailID=' + values.emailID + '&password=' + values.password
         // This will send the get request
@@ -67,17 +72,19 @@ const useForm = (validateForm) => {
             if (response.data === "Not a user") {
                 console.log("Not a user => Redirect to Sign In")
                 authSuccess = false;
-                //If any erros, save them
+                //If any errors, save them
                 setError(validateForm(values,authSuccess));
             } 
             else {
                 console.log("Redirecting will happen");
                 //If any erros, save them
                 setError(validateForm(values,authSuccess));
-                RedirectSignIn()
+                // successfull signin now redirect to SignIn
+                history.push("/Dashboard");
             }
         })
     }
+
     return{update, values, submitForm, logInForm, errors};
 }
 export default useForm;
