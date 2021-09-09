@@ -35,7 +35,7 @@ class Header extends Component {
                 Sign Up
               </a>
             </li>
-
+            
             <li>
               <a className="smoothscroll" href="#signin">
                 Sign In
