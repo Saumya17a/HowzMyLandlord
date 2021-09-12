@@ -1,3 +1,4 @@
+const { json } = require('express')
 const express = require('express')
 const router = express.Router()
 const signupTemplate = require('./models/signUpModel')
@@ -33,20 +34,26 @@ router.post('/signup', function (request, response) {
 })
 
 // Get Method Route for sign in
-router.get('/signin', function (request,response) {
-    // Retreive the emai and password from the request query 
-    emailID = request.query.emailID
-    password = request.query.password
+router.post('/signin', function (request,response) {
+    // Retreive the emai and password from the request body
+    emailID = request.body.emailID
+    password = request.body.password
     // Search Criteria 
     const tryUser = new signupTemplate()
-    signupTemplate.find({'emailID' : emailID, 'password' : password})
+    // Find the user => query , projection
+    signupTemplate.find({'emailID' : emailID, 'password' : password}, { 'password' : 0, '_id' : 0} )
     .then(data => 
     {
         if (data.length === 0) {
-            response.json("Not a user")
+            const codeResponse = {'code' : '400'}
+            response.json(codeResponse)
             
         } else {
-            response.json("Redirecting to dashboard")
+            // Build Response 
+            console.log('Data Response Type => ' + typeof(data) + ", Data Response Length => " + data.length, "Data => " + data )
+            const codeResponse = {'code' : '200', 'body' : data }
+            // Send Response
+            response.json(codeResponse)
         }
     })
     .catch(error => {response.json(error)})
