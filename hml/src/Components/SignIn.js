@@ -1,10 +1,11 @@
 import Fade from "react-reveal";
 import useForm from "./useForm";
 import validateSignIn from './validateSignIn.js';
-
+import { unmountComponentAtNode, render } from "react-dom";
 
 function SignIn() {
   const {update, values, logInForm, errors} = useForm(validateSignIn);
+  
 
   return (
     <section id="signin">

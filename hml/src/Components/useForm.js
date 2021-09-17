@@ -66,8 +66,8 @@ const useForm = (validateForm) => {
         //Send the email and password as query
         const queryURl = 'http://localhost:4000/app/signin'
         var signInCredentials = {'emailID' : values.emailID, 'password': values.password}
+        
         // This will send the post request
-
         axios.post(queryURl, signInCredentials)
         .then(response => {
             console.log(response.data)
@@ -79,7 +79,6 @@ const useForm = (validateForm) => {
             } 
             else if (response.data.code === '200'){
                 const responseBody = response.data.body[0];
-                console.log('Response body => ' + responseBody[0].firstName )
                 //If any erros, save them
                 setError(validateForm(values,authSuccess));
                 // successfull signin now redirect to SignIn
