@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
@@ -29,6 +29,9 @@ const useForm = (validateForm) => {
     // related to user input
     const [errors, setError] = useState({});
 
+    // this flag tracks whether signup has been initiated
+    const [signinFlag, flagSetter] = useState(false)
+
     /*
     Description:    This function saves the user entered values in the signup form.
     */
@@ -58,7 +61,12 @@ const useForm = (validateForm) => {
         })
         console.log(emailAlreadyInUse)
     }
-    const logInForm = e => {
+
+    /*
+    Description:    This function sends login credentials to backend server to 
+                    verify them and grant access to the user.
+    */    
+    function logInForm (e) {
 
         var authSuccess = true;
         e.preventDefault()
@@ -82,11 +90,18 @@ const useForm = (validateForm) => {
                 //If any erros, save them
                 setError(validateForm(values,authSuccess));
                 // successfull signin now redirect to SignIn
-                history.push("/Dashboard");
+                // history.push("/Dashboard");
+                // true indicates that signin has been initiated
+                flagSetter(true)
+                console.log("signinFlag set to " + signinFlag)
             }
         })
     }
 
-    return{update, values, submitForm, logInForm, errors};
+    function getSigninFlag(){
+        return(signinFlag)
+    }
+
+    return{update, values, submitForm, logInForm, errors, getSigninFlag};
 }
 export default useForm;

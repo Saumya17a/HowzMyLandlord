@@ -11,21 +11,51 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Link
 } from "react-router-dom";
 
 
 
-function App(){
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      foo: "bar",
+      resumeData: {}
+    };
+    ReactGA.initialize("UA-110570651-1");
+    ReactGA.pageview(window.location.pathname);
+  }
 
+  getResumeData() {
+    $.ajax({
+      url: "./resumeData.json",
+      dataType: "json",
+      cache: false,
+      success: function(data) {
+        this.setState({ resumeData: data });
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.log(err);
+        alert(err);
+      }
+    });
+  }
+
+  componentDidMount() {
+    this.getResumeData();
+  }
+
+  render() {
     return (
       <Router>
-        <div>
+        <div className="App">
           <Switch>
             <Route exact path="/">
-              <Header />
-              <About/>
-              <SignIn/>
-              <Footer/>
+              <Header data={this.state.resumeData.main} />
+              <About data={this.state.resumeData.main} />
+              <SignIn data={this.state.resumeData.resume} />
+              <Footer data={this.state.resumeData.main} />
             </Route>
             <Route exact path="/Dashboard">
               <Dashboard/>
@@ -35,5 +65,6 @@ function App(){
       </Router>
     );
   }
+}
 
 export default App;
