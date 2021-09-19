@@ -1,14 +1,15 @@
 import Fade from "react-reveal";
 import useForm from "./useForm";
 import validateSignIn from './validateSignIn.js';
-import { unmountComponentAtNode, render } from "react-dom";
 import {useState, useEffect} from 'react';
 
 function SignIn() {
   const {update, values, logInForm, errors, getSigninFlag} = useForm(validateSignIn);
   
+  // flag tracks whether successfull sign in happened or not
   const[signinFlag, setFlag] = useState(false)
 
+  // update sininFlag
   useEffect(()=>{
     setFlag(getSigninFlag())
     console.log("useEffect hit, flag set to " + signinFlag)
