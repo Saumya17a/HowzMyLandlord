@@ -1,69 +1,37 @@
-import React, { Component } from "react";
-import ReactGA from "react-ga";
-import $ from "jquery";
+import React, { Component, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import About from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
-import Dashboard from "Components/Dashboard";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import SignUp from "./Components/SignUp";
 
 
+const App = () =>{
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      foo: "bar",
-      resumeData: {}
-    };
+  // this flag tracks whehter user is signed in or not
+  const [signInFlag, setSignInFlag] = useState(false);
 
-  }
-
-  getResumeData() {
-    $.ajax({
-      url: "./resumeData.json",
-      dataType: "json",
-      cache: false,
-      success: function(data) {
-        this.setState({ resumeData: data });
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(err);
-        alert(err);
-      }
-    });
-  }
-
-  componentDidMount() {
-    this.getResumeData();
-  }
-
-  render() {
+  // this flag tracks whehter user is signed in or not
+  const [signUpFlag, setSignUpFlag] = useState(false);
+  
+  if(signInFlag === true || signUpFlag === true){
     return (
-      <Router>
-        <div className="App">
-          <Switch>
-            <Route exact path="/">
-              <Header data={this.state.resumeData.main} />
-              <About data={this.state.resumeData.main} />
-              <SignIn data={this.state.resumeData.resume} />
-              <Footer data={this.state.resumeData.main} />
-            </Route>
-            <Route exact path="/Dashboard">
-              <Dashboard/>
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    );
+      <div>
+       <Header name = {'Howz My Landlord'} description = {'Have an address? Type it in'}/>
+       </div>
+          
+    )
+  }
+  else{
+    return (
+      <div>
+       <Header name = {'Howz My Landlord'} description = {'Have an address? Type it in'}/>
+       <SignUp/>
+       <SignIn signinFlag= {signInFlag}  setFlag={setSignInFlag}/>
+       </div>
+          
+    )
   }
 }
+
 
 export default App;

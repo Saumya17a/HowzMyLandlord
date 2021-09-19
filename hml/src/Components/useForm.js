@@ -2,6 +2,12 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
+
+/*
+  Description:  custom hook to take user credentials and generate appropriate errors.
+  Parameters:   
+    validateForm: this function checks credentials and returns errors for them.
+*/
 const useForm = (validateForm) => {
     /*
     Description:    this state object will store the sign-up information
@@ -87,6 +93,7 @@ const useForm = (validateForm) => {
             } 
             else if (response.data.code === '200'){
                 const responseBody = response.data.body[0];
+                console.log('Response body => ' + responseBody.firstName )
                 //If any erros, save them
                 setError(validateForm(values,authSuccess));
                 // successfull signin now redirect to SignIn

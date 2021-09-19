@@ -3,11 +3,18 @@ import useForm from "./useForm";
 import validateSignIn from './validateSignIn.js';
 import {useState, useEffect} from 'react';
 
-function SignIn() {
+
+/*
+  Description:  returns the signup form.
+  Parameters:   
+    signInFlag: this flag indicates to App.js whether user successfully signed in or not
+    setFag:     signInFlag's setter function
+*/
+function SignIn({signinFlag, setFlag}) {
   const {update, values, logInForm, errors, getSigninFlag} = useForm(validateSignIn);
   
-  // flag tracks whether successfull sign in happened or not
-  const[signinFlag, setFlag] = useState(false)
+  // // flag tracks whether successfull sign in happened or not
+  // const[signinFlag, setFlag] = useState(false)
 
   // update sininFlag
   useEffect(()=>{
