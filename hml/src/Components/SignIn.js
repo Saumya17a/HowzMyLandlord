@@ -5,7 +5,7 @@ import {useState, useEffect} from 'react';
 
 
 /*
-  Description:  returns the signup form.
+  Description:  returns the signin form.
   Parameters:   
     signInFlag: this flag indicates to App.js whether user successfully signed in or not
     setFag:     signInFlag's setter function
@@ -23,47 +23,43 @@ function SignIn({signinFlag, setFlag}) {
   })
 
 
-  if(signinFlag === true){
-    return(<div></div>)
-  }
-  else{
-    return (
-      <section id="signin">
-        <Fade duration={1000}>
-          <div className="row">
-  
-            <div className="ten columns main-col">
-              <h2 class = "backspace1" >Sign In</h2>
-              <div className="row">
-  
-              {/*
-                Section - Sign In Form
-                Description - This form asks for name, email id and password
-              */}
-              <form value="Submit" onSubmit={logInForm} className='form' noValidate>
-                  <label>
-                Email ID:
-                <input type="email" name="emailID" placeholder="abc@yahoo.com" value={values.emailID} onChange={update} />
-                {<p style={{ color: 'red' }}>{errors.emailID}</p>}
-                </label>
+  return (
+    <section id="signin">
+      <Fade duration={1000}>
+        <div className="row">
+
+          <div className="ten columns main-col">
+            <h2 class = "backspace1" >Sign In</h2>
+            <div className="row">
+
+            {/*
+              Section - Sign In Form
+              Description - This form asks for name, email id and password
+            */}
+            <form value="Submit" onSubmit={logInForm} className='form' noValidate>
                 <label>
-                Password:
-                  <input type="password" name="password" placeholder="Do Not Reveal"value={values.password} onChange={update}/>
-                  {<p style={{ color: 'red' }}>{errors.password}</p>}
-                </label>
-                <input type="submit" value="Go" />
-                <span className="form-input-login">
-                  &ensp;New to this website?. <a href="#signup">Sign Up </a> 
-                </span>
-              </form>
-  
-              </div>
+              Email ID:
+              <input type="email" name="emailID" placeholder="abc@yahoo.com" value={values.emailID} onChange={update} />
+              {<p style={{ color: 'red' }}>{errors.emailID}</p>}
+              </label>
+              <label>
+              Password:
+                <input type="password" name="password" placeholder="Do Not Reveal"value={values.password} onChange={update}/>
+                {<p style={{ color: 'red' }}>{errors.password}</p>}
+              </label>
+              <input type="submit" value="Go" />
+              <span className="form-input-login">
+                &ensp;New to this website?. <a href="#signup">Sign Up </a> 
+              </span>
+            </form>
+
             </div>
           </div>
-        </Fade>
-      </section>
-    );
-  }
+        </div>
+      </Fade>
+    </section>
+  );
+
     
 };
 

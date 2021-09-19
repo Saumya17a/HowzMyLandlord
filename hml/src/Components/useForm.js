@@ -37,6 +37,9 @@ const useForm = (validateForm) => {
 
     // this flag tracks whether signup has been initiated
     const [signinFlag, flagSetter] = useState(false)
+    
+    // this flag tracks whether signup has been initiated
+    const [signupFlag, signinflagSetter] = useState(false)
 
     /*
     Description:    This function saves the user entered values in the signup form.
@@ -60,6 +63,9 @@ const useForm = (validateForm) => {
         // send post request to hmlBackend server
         axios.post('http://localhost:4000/app/signup', values)
         .then(response => {
+            // check if signup was successfull
+            signinflagSetter(response.data['successfullSignUp'])
+
             // check response to see if emailID flag is returned
             emailAlreadyInUse = response.data['userAlreadyExists']
             // if any errors, save them
@@ -109,6 +115,10 @@ const useForm = (validateForm) => {
         return(signinFlag)
     }
 
-    return{update, values, submitForm, logInForm, errors, getSigninFlag};
+    function getSignupFlag(){
+        return(signupFlag)
+    }
+
+    return{update, values, submitForm, logInForm, errors, getSigninFlag, getSignupFlag, getSignupFlag};
 }
 export default useForm;

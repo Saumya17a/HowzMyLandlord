@@ -1,15 +1,28 @@
-import React from 'react';
 import Fade from "react-reveal";
 import useForm from "./useForm";
 import validateForm from './validateForm';
+import React, { useEffect } from "react";
 
-function SignUp() {
-  const {update, values, submitForm,logInForm, errors} = useForm(validateForm);
+/*
+  Description:  returns the signup form.
+  Parameters:   
+    signupFlag: this flag indicates to App.js whether user successfully signed in or not
+    setFag:     signupFlag's setter function
+*/
+function SignUp({signupFlag, setFlag}) {
+  const {update, values, submitForm, errors, getSignupFlag} = useForm(validateForm);
+
+  // update sininFlag
+  useEffect(()=>{
+      setFlag(getSignupFlag())
+      console.log("useEffect hit in SignUp, flag set to " + signupFlag)
+ })
   
-  {/*
+  
+  /*
     Section - Sign Up Form
     Description - This form asks for name, email id and password
-  */}
+  */
   return (
     <section id="signup">
       <Fade duration={1000}>

@@ -25,7 +25,7 @@ const App = () =>{
     return (
       <div>
        <Header name = {'Howz My Landlord'} description = {'Have an address? Type it in'}/>
-       <SignUp/>
+       <SignUp signupFlag= {signUpFlag}  setFlag={setSignUpFlag}/>
        <SignIn signinFlag= {signInFlag}  setFlag={setSignInFlag}/>
        </div>
           

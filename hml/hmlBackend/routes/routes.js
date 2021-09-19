@@ -19,14 +19,17 @@ router.post('/signup', function (request, response) {
     .then(userAlreadyExists => {
         // if response is false, then save the new user.
         if(userAlreadyExists===false){
+            response.json({'successfullSignUp':true})
             //save successfully
             signedUpUser.save()
             .then(data=> {response.json(data)})
             // in case of erros return errors
             .catch(error => {response.json(error)})
+            console.log("successfullSignUp set to true")
         }
         else{
-            response.json({'userAlreadyExists':true})
+            response.json({'userAlreadyExists':true, 'successfullSignUp':false})
+            console.log("successfullSignUp set to false")
         }
     })
     .catch(error => {response.json(error)})
