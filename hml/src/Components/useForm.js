@@ -79,11 +79,11 @@ const useForm = (validateForm) => {
             } 
             else if (response.data.code === '200'){
                 const responseBody = response.data.body[0];
-                console.log('Response body => ' + responseBody[0].firstName )
+                console.log('Response body => ' + responseBody.firstName )
                 //If any erros, save them
                 setError(validateForm(values,authSuccess));
                 // successfull signin now redirect to SignIn
-                history.push("/Dashboard");
+                // history.push("/Dashboard");
             }
         })
     }
