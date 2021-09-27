@@ -1,7 +1,6 @@
 import Fade from "react-reveal";
 import useForm from "./useForm";
 import validateSignIn from './validateSignIn.js';
-import {useState, useEffect} from 'react';
 
 
 /*
@@ -10,18 +9,11 @@ import {useState, useEffect} from 'react';
     signInFlag: this flag indicates to App.js whether user successfully signed in or not
     setFag:     signInFlag's setter function
 */
-function SignIn({signinFlag, setFlag}) {
-  const {update, values, logInForm, errors, getSigninFlag} = useForm(validateSignIn);
+function SignIn({credentials, setCredentials}) {
+  const {update, values, logInForm, errors} = useForm(validateSignIn, credentials, setCredentials);
   
   // // flag tracks whether successfull sign in happened or not
   // const[signinFlag, setFlag] = useState(false)
-
-  // update sininFlag
-  useEffect(()=>{
-    setFlag(getSigninFlag())
-    console.log("useEffect hit, flag set to " + signinFlag)
-  })
-
 
   return (
     <section id="signin">
@@ -52,15 +44,13 @@ function SignIn({signinFlag, setFlag}) {
                 &ensp;New to this website?. <a href="#signup">Sign Up </a> 
               </span>
             </form>
-
             </div>
           </div>
         </div>
       </Fade>
     </section>
   );
-
-    
+   
 };
 
 export default SignIn;

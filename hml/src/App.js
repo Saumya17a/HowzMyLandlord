@@ -1,36 +1,30 @@
-import React, { Component, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import SignIn from "./Components/SignIn";
 import SignUp from "./Components/SignUp";
-
+import { useCookies } from "react-cookie";
 
 const App = () =>{
 
-  // this flag tracks whehter user is signed in or not
-  const [signInFlag, setSignInFlag] = useState(false);
+  // cookies to store user credentials
+  const [credentials, setCredentials, removeCredentials] = useCookies([
+    'flag',
+    'firstName',
+    'lastName',
+    'emailID'
+  ]);
 
-  // this flag tracks whehter user is signed in or not
-  const [signUpFlag, setSignUpFlag] = useState(false);
-  
-  if(signInFlag === true || signUpFlag === true){
-    return (
-      <div>
-       <Header name = {'Howz My Landlord'} description = {'Have an address? Type it in'}/>
-       </div>
-          
-    )
-  }
-  else{
-    return (
-      <div>
-       <Header name = {'Howz My Landlord'} description = {'Have an address? Type it in'}/>
-       <SignUp signupFlag= {signUpFlag}  setFlag={setSignUpFlag}/>
-       <SignIn signinFlag= {signInFlag}  setFlag={setSignInFlag}/>
-       </div>
-          
-    )
-  }
+  return (
+    <div>
+      <Header name = {'Howz My Landlord'} description = {'Have an address? Type it in'} credentials={credentials}/>
+      {  credentials['flag'] !== 'true' &&
+        <SignUp credentials={credentials} setCredentials={setCredentials}/> 
+      }
+      {  credentials['flag'] !== 'true' &&
+        <SignIn credentials={credentials} setCredentials={setCredentials}/>
+      } 
+      </div>   
+  )
 }
 
 

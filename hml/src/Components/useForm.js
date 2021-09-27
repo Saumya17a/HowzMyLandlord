@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
 
 
 /*
@@ -8,7 +7,7 @@ import { useHistory } from "react-router-dom";
   Parameters:   
     validateForm: this function checks credentials and returns errors for them.
 */
-const useForm = (validateForm) => {
+const useForm = (validateForm, credentials, setCredentials) => {
     /*
     Description:    this state object will store the sign-up information
                     entered by the user. 
@@ -27,19 +26,10 @@ const useForm = (validateForm) => {
     lastName: ''
     });
 
-    // this history hook will be used to redirect to Dashboard after successfull signin
-    let history = useHistory();
-
     // get errors and its setter function
     // these will be used to display errors 
     // related to user input
     const [errors, setError] = useState({});
-
-    // this flag tracks whether signup has been initiated
-    const [signinFlag, flagSetter] = useState(false)
-    
-    // this flag tracks whether signup has been initiated
-    const [signupFlag, signinflagSetter] = useState(false)
 
     /*
     Description:    This function saves the user entered values in the signup form.
@@ -63,15 +53,14 @@ const useForm = (validateForm) => {
         // send post request to hmlBackend server
         axios.post('http://localhost:4000/app/signup', values)
         .then(response => {
-            // check if signup was successfull
-            signinflagSetter(response.data['successfullSignUp'])
-
             // check response to see if emailID flag is returned
             emailAlreadyInUse = response.data['userAlreadyExists']
             // if any errors, save them
             setError(validateForm(values,emailAlreadyInUse));
+            if(emailAlreadyInUse !== true){
+                setCredentials('flag', true)
+            }
         })
-        console.log(emailAlreadyInUse)
     }
 
     /*
@@ -102,23 +91,12 @@ const useForm = (validateForm) => {
                 console.log('Response body => ' + responseBody.firstName )
                 //If any erros, save them
                 setError(validateForm(values,authSuccess));
-                // successfull signin now redirect to SignIn
-                // history.push("/Dashboard");
-                // true indicates that signin has been initiated
-                flagSetter(true)
-                console.log("signinFlag set to " + signinFlag)
+                // save flag in cookies
+                setCredentials('flag', true, {maxAge:3600})
             }
         })
     }
 
-    function getSigninFlag(){
-        return(signinFlag)
-    }
-
-    function getSignupFlag(){
-        return(signupFlag)
-    }
-
-    return{update, values, submitForm, logInForm, errors, getSigninFlag, getSignupFlag, getSignupFlag};
+    return{update, values, submitForm, logInForm, errors};
 }
 export default useForm;
